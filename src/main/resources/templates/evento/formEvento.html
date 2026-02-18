@@ -2,19 +2,38 @@
 <html xmlns:th="http://thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Form event</title>
 </head>
 <body>
-<h1>Event Registration</h1>
+<h4 class="container">Event Registration</h4>
 
-<form method="post">
+<h3 class="container">
+    <a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista
+        de eventos</a>
+</h3>
+
+<form class="container" method="post">
     Name: <input type="text" value="" name="nome"/>
-    Location: <input type="text" value="" name="local"/>
-    Date: <input type="date" value="" name="data"/>
-    Time: <input type="text" value="" name="horario"/>
-
-    <button type="submit">Save</button>
+    <div class="row">
+        <div class="input-field col s6">
+            Location: <input type="text" value="" name="local"/>
+        </div>
+        <div class="input-field col s3">
+            Date: <input type="date" value="" name="data"/>
+        </div>
+        <div class="input-field col s3">
+            Time: <input type="text" value="" name="horario"/>
+        </div>
+    </div>
+    <button class="waves-effect waves-light btn" type="submit">Save</button>
 </form>
+<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
 </body>
 </html>

@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Index</title>
 </head>
 <body>
-    <h1>Hello! This is my First application</h1>
+<h4 class="container">Lista de eventos</h4>
+
+<h3 class="container"><a href="/cadastrarEvento" class="waves-effect waves-light btn"><i
+        class="material-icons left">add_circle_outline</i>Cadastrar evento</a></h3>
+<table class="container">
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Local</th>
+        <th>Data</th>
+        <th>Horário</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="evento : ${eventos}" class="row">
+        <td><span th:text="${evento.nome}"></span></td>
+        <td><span th:text="${evento.local}"></span></td>
+        <td><span th:text="${evento.data}"></span></td>
+        <td><span th:text="${evento.horario}"></span></td>
+    </tr>
+    </tr>
+    </tbody>
+</table>
+<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>
 </html>
