@@ -53,19 +53,26 @@ public class EventoController {
         return mv;
     }
 
-//    @RequestMapping(value = "/{codigo}", method = RequestMethod.POST)
-//    public String detalhesEventoComConvidado(@PathVariable("codigo") long codigo, Convidado convidado) {
-//        Evento evento = er.findByCodigo(codigo);
-//
-//        convidado.setEvento(evento);
-//        cr.save(convidado);
-//        return "redirect:/{codigo}";
-//    }
+    @RequestMapping("/deletar")
+    public String deletarEvento(long codigo) {
+        Evento evento = er.findByCodigo(codigo);
+        er.delete(evento);
+        return "redirect:/listarEventos";
+    }
+
+    @RequestMapping("/deletarConvidado")
+    public String deletarConvidado(long codigo) {
+        Convidado conviado = cr.findByCodigo(codigo);
+        cr.delete(conviado);
+
+        Evento evento = conviado.getEvento();
+        long codigoLong = evento.getCodigo();
+        String codigoR = "" + codigoLong;
+        return "redirect:/" + codigoR;
+    }
 
     @RequestMapping(value = "/{codigo}", method = RequestMethod.POST)
-    public String detalhesEventoComConvidado(@PathVariable("codigo") long codigo,
-                                             @RequestParam("nomeConvidado") String nomeConvidado,
-                                             @RequestParam("rg") String rg) {
+    public String detalhesEventoComConvidado(@PathVariable("codigo") long codigo, @RequestParam("nomeConvidado") String nomeConvidado, @RequestParam("rg") String rg) {
 
         Evento evento = er.findByCodigo(codigo);
 
